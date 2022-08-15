@@ -2,8 +2,8 @@
 ```
 pip install -r requirements.txt
 python manage.py makemigrations
-python manage.py migrate
-python manage.py createsuperuser
+python manage.py migrate --run-syncdb
+python manage.py createsuperuser (не обов'язково)
 python manage.py runserver
 ```
 Спочатку увійдіть або створіть свій акаунт (якщо ви створювали суперюзера можна скористатися ним).

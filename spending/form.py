@@ -12,7 +12,7 @@ class CreateSpendingForm(forms.Form):
     category = forms.ChoiceField(label='Категорія',
                                  choices=SpendingCategory.choices)
     comment = forms.CharField(label='Коментар', required=False, max_length=255, widget=forms.Textarea)
-    date = forms.DateField(initial=datetime.now)
+    date = forms.DateField(initial=datetime.now, label='Дата')
 
     def save(self, user):
         new_spend = Spending.objects.create(
