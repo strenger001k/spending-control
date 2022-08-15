@@ -1,0 +1,34 @@
+{% load static %}
+<html>
+    <head>
+        {% block head %}
+        <title>{% block title %}{% endblock %}</title>
+        <link rel='stylesheet' type='text/css' href='{% static 'css\bootstrap.css' %}'/>
+        {% block afterhead %}{% endblock %}
+        {% endblock %}
+    </head>
+    <body>
+        <header>
+            <nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top shadow_head">
+                    <div class="collapse navbar-collapse">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'user_list' %}">Витрати</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'statistics' %}">Статистика</a>
+                            </li>
+                        </ul>
+                        <a class="navbar-brand" href="{% url 'logout_user' %}?next={% url 'login_user' %}" style="font-family: Geneva, Arial, Helvetica, sans-serif">Вийти</a>
+                    </div>
+            </nav>
+        </header>
+        <br>
+        <div class="spacer">
+            &nbsp;
+        </div>
+
+        {% block content %}{% endblock %}
+
+    </body>
+</html>

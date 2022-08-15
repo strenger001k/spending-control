@@ -1,0 +1,37 @@
+{% load static %}
+
+<link rel='stylesheet' type='text/css' href='{% static 'css\bootstrap.css' %}'/>
+<title>Логін</title>
+<br>
+<div class="container">
+  <div class="row">
+    <div class="offset-lg-3 col-lg-6 col-sm-12">
+        {% if messages %}
+          {% for message in messages %}
+            <div class="alert alert-warning" role="alert">
+              {{ message }}
+            </div>
+          {% endfor %}
+        {% endif %}
+        <form action='' method='POST' style="margin-left: 10px; margin-right: 10px">
+          {% csrf_token %}
+
+          <div class="form-outline mb-4">
+            <label class="form-label" for="form2Example1">Username</label>
+            <input type="text" class="form-control" name='username'/>
+          </div>
+        
+          <div class="form-outline mb-4">
+            <label class="form-label" for="form2Example2">Password</label>
+            <input type="password" class="form-control" name='password'/>
+          </div>
+
+          <button type="submit" class="btn btn-primary">Увійти</button>
+
+          <div class="text-center">
+            <p>Не маєш акаунта? <a href="{% url 'register_user' %}">Зареєструватися</a></p>
+          </div>
+        </form>
+    </div>
+  </div>
+</div>

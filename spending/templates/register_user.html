@@ -1,0 +1,16 @@
+{% load static %}
+
+<link rel='stylesheet' type='text/css' href='{% static 'css\bootstrap.css' %}'/>
+<title>Реєструватися</title>
+<br>
+<div class="container" >
+  <div class="row">
+    <div class="offset-lg-3 col-lg-6 col-sm-12">
+        <form action={% url 'register_user' %} method='POST' style="margin-left: 10px; margin-right: 10px">
+            {% csrf_token %}
+            {{ form.as_p }}
+          <button type="submit" class="btn btn-primary">Зареєструватися</button>
+        </form>
+    </div>
+  </div>
+</div>

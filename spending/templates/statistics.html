@@ -1,0 +1,142 @@
+{% extends "admin_base.html" %}
+{% load static %}
+{% block title %}Статистика{% endblock %}
+{% block afterhead %}
+    <link rel='stylesheet' type='text/css' href='{% static 'css\bootstrap.css' %}'/>
+{% endblock %}
+{% block content %}
+
+  <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+    <h2 align="center" class="pop-header mt-3 display-4">Статистика</h2>
+  </div>
+
+  <div class="container">
+    <div class="card-deck mb-6 text-center row">
+      <div class="card mb-4 col-sm p-3 mx-1">
+        <div class="card-header">
+          <h4 class="my-0 font-weight-normal">Статистика за день</h4>
+        </div>
+        <div class="card-body">
+            {% if price.today %}
+                <h1 class="card-title pricing-card-title"> {{ price.today }} <small class="text-muted">грн.</small></h1>
+            {% else %}
+                <h1 class="card-title pricing-card-title"> 0 <small class="text-muted">грн.</small></h1>
+            {% endif %}
+          <ul class="list-unstyled mt-3 mb-4">
+            <table class="table table table-borderless">
+                <tbody>
+                {% for key, value in category_today.items %}
+                    <tr>
+                        <td>{{ key }}</td>
+                        {% if value%}
+                          <td>{{ value }} грн.</td>
+                        {% else %}
+                          <td>0 грн.</td>
+                        {% endif %}
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card mb-4 col-sm p-3 mx-1">
+        <div class="card-header">
+          <h4 class="my-0 font-weight-normal">Статистика за місяць</h4>
+        </div>
+        <div class="card-body">
+            {% if price.month %}
+                <h1 class="card-title pricing-card-title"> {{ price.month }} <small class="text-muted">грн.</small></h1>
+            {% else %}
+                <h1 class="card-title pricing-card-title"> 0 <small class="text-muted">грн.</small></h1>
+            {% endif %}
+            <ul class="list-unstyled mt-3 mb-4">
+                <table class="table table table-borderless">
+                    <tbody>
+                    {% for key, value in category_month.items %}
+                        <tr>
+                            <td>{{ key }}</td>
+                            {% if value %}
+                              <td>{{ value }} грн.</td>
+                            {% else %}
+                              <td>0 грн.</td>
+                            {% endif %}
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </ul>
+          </div>
+      </div>
+
+      <div class="card mb-4 col-sm p-3 mx-1">
+        <div class="card-header">
+          <h4 class="my-0 font-weight-normal">Статистика за рік</h4>
+        </div>
+        <div class="card-body">
+            {% if price.year %}
+                <h1 class="card-title pricing-card-title"> {{ price.year }} <small class="text-muted">грн.</small></h1>
+            {% else %}
+                <h1 class="card-title pricing-card-title"> 0 <small class="text-muted">грн.</small></h1>
+            {% endif %}
+            <ul class="list-unstyled mt-3 mb-4">
+                <table class="table table table-borderless">
+                    <tbody>
+                    {% for key, value in category_year.items %}
+                        <tr>
+                            <td>{{ key }}</td>
+                            {% if value %}
+                              <td>{{ value }} грн.</td>
+                            {% else %}
+                              <td>0 грн.</td>
+                            {% endif %}
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </ul>
+          </div>
+      </div>
+    </div>
+    <div class="card-deck mb-6 text-center row">
+    <div class="card mb-4 col-sm p-3 mx-1">
+        <div class="card-header">
+          <h4 class="my-0 font-weight-normal" style='text-align: center;'>Загальна статистика</h4>
+        </div>
+        <div class="card-body">
+            {% if price.all_time %}
+                <h1 class="card-title pricing-card-title"> {{ price.all_time }} <small class="text-muted">грн.</small></h1>
+            {% else %}
+                <h1 class="card-title pricing-card-title"> 0 <small class="text-muted">грн.</small></h1>
+            {% endif %}
+          <ul class="list-unstyled mt-3 mb-4">
+            <table class="table table-borderless">
+              <thead>
+                <tr>
+                    <th>Назва категорії</th>
+                    <th>Кількість</th>
+                    <th>Сума</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for key, value in category_all_time.items %}
+                    <tr>
+                        <td>{{ key }}</td>
+                        <td>{{ value.1 }}</td>
+                        {% if value.0 %}
+                          <td>{{ value.0 }} грн.</td>
+                        {% else %}
+                          <td>0 грн.</td>
+                        {% endif %}
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+{% endblock %}
