@@ -1,8 +1,8 @@
 Запуску проекту:
 ```
 pip install -r requirements.txt
-python manage.py makemigrations
-python manage.py migrate --run-syncdb
+python manage.py makemigrations spending
+python manage.py migrate
 python manage.py createsuperuser (не обов'язково)
 python manage.py runserver
 ```
